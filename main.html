@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>This is an Random Color Picker</title>
+</head>
+<body>
+    
+
+    <h1>Random color picker</h1>
+
+<input type="color" id="colorPicker">
+<button onclick="randomColor()">Random Color</button>
+
+<button onclick="copyColor()">Copy Color</button>
+
+<div id="colorDisplay"></div>
+
+
+
+<script>
+
+function randomColor(){
+
+
+//  We are generating random color in hexadecimal format
+
+const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+
+
+// Setting the selected color and displaying it 
+
+document.getElementById('colorPicker').value = randomColor;
+document.getElementById('colorDisplay').style.backgroundColor = randomColor;
+
+}
+
+function copyColor(){
+
+//  Get the selected color
+const selectedColor = document.getElementById('colorPicker').value;
+
+//  Create a temporary input element
+const tempInput = document.createElement('Input');
+tempInput.value = selectedColor;
+document.body.appendChild(tempInput);
+
+//  Select and copy the color 
+tempInput.select();
+document.execCommand('copy');
+
+// Remove the temporary input element
+document.body.removeChild(tempInput);
+
+
+//  Show a confirmation message
+alert('Color copied: '  + selectedColor);
+
+
+}
+
+
+</script>
+
+
+</body>
+</html>
